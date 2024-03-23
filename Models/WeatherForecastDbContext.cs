@@ -1,7 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace WeatherForecaseApi.Models;
+namespace WeatherForecastApi.Models;
 
 public class WeatherForecastDbContext : DbContext
 {

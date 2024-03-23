@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using WeatherForecaseApi.Models;
+using WeatherForecastApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();

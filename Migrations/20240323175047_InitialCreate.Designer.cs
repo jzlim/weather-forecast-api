@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WeatherForecaseApi.Models;
+using WeatherForecastApi.Models;
 
 #nullable disable
 
@@ -25,7 +25,7 @@ namespace WeatherForecastApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WeatherForecaseApi.Models.City", b =>
+            modelBuilder.Entity("WeatherForecastApi.Models.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace WeatherForecastApi.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("WeatherForecaseApi.Models.State", b =>
+            modelBuilder.Entity("WeatherForecastApi.Models.State", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace WeatherForecastApi.Migrations
                     b.ToTable("States");
                 });
 
-            modelBuilder.Entity("WeatherForecaseApi.Models.WeatherForecast", b =>
+            modelBuilder.Entity("WeatherForecastApi.Models.WeatherForecast", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,9 +103,9 @@ namespace WeatherForecastApi.Migrations
                     b.ToTable("WeatherForecasts");
                 });
 
-            modelBuilder.Entity("WeatherForecaseApi.Models.City", b =>
+            modelBuilder.Entity("WeatherForecastApi.Models.City", b =>
                 {
-                    b.HasOne("WeatherForecaseApi.Models.State", "State")
+                    b.HasOne("WeatherForecastApi.Models.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -114,9 +114,9 @@ namespace WeatherForecastApi.Migrations
                     b.Navigation("State");
                 });
 
-            modelBuilder.Entity("WeatherForecaseApi.Models.WeatherForecast", b =>
+            modelBuilder.Entity("WeatherForecastApi.Models.WeatherForecast", b =>
                 {
-                    b.HasOne("WeatherForecaseApi.Models.City", "City")
+                    b.HasOne("WeatherForecastApi.Models.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
