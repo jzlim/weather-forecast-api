@@ -6,6 +6,7 @@ public class WeatherForecastDTO
   public int CityId { get; set; }
   public required string CityName { get; set; }
   public required string StateName { get; set; }
+  public DateOnly ForecastDate { get; set; }
   public DateOnly ValidDate { get; set; }
   public string? Summary { get; set; }
   public string? WeatherDescription { get; set; }
