@@ -1,32 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
+using WeatherForecastApi.Models;
+using WeatherForecastApi.Services;
 
-namespace WeatherForecastApi.Controllers;
-
-[ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+namespace WeatherForecastApi.Controllers
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class WeatherForecastController : ControllerBase
     {
-        _logger = logger;
-    }
+        private WeatherForecastService _service;
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        public WeatherForecastController(WeatherForecastDbContext context)
         {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+            _service = new WeatherForecastService(context);
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<WeatherForecastDTO>> GetWeatherForecasts()
+        {
+            return await _service.GetWeatherForecasts();
+        }
     }
+
 }
