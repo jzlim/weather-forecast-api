@@ -97,7 +97,7 @@ namespace WeatherForecastApi.Services
         ForecastDate = item.ForecastDate,
         ValidDate = item.ValidDate,
         Summary = item.Summary,
-        WeatherDescription = item.Summary,
+        WeatherDescription = item.WeatherDescription,
         MinTemperature = item.MinTemperature,
         MaxTemperature = item.MaxTemperature
       };
